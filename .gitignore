@@ -1,3 +1,10 @@
+## Java
+ 
+*.class
+*.war
+*.ear
+hs_err_pid*
+
 # Temporary Files
 *~
 .*.swp
@@ -42,6 +49,8 @@ libgdx-*.zip.MD5
 
 *.iml
 /.idea/
+out/
+com_crashlytics_export_strings.xml
 
 #core & extension libs/ folders that have no 3rd party dependencies in them
 /gdx/libs
@@ -57,3 +66,50 @@ libgdx-*.zip.MD5
 
 #ensure gdx-setup.jar works properly
 !/extensions/gdx-setup/src/com/badlogic/gdx/setup/resources/gwt/war
+
+
+
+## Android Studio and Intellij and Android in general
+android/libs/armeabi/
+android/libs/armeabi-v7a/
+android/libs/x86/
+android/gen/
+.idea/
+*.ipr
+*.iws
+
+
+ 
+## Eclipse
+.classpath
+.project
+.metadata
+**/bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
+ 
+## NetBeans
+**/nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+ 
+## Gradle
+ 
+.gradle
+gradle-app.setting
+build/
+ 
+## OS Specific
+.DS_Store
