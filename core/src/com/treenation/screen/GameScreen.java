@@ -26,7 +26,7 @@ public class GameScreen implements Screen{
         
         world = new GameWorld(midPointX); // initialize world
         renderer = new GameRenderer(world, (int) gameHeight, midPointX); // initialize renderer
-        Gdx.input.setInputProcessor(new InputHandler(world));
+        //Gdx.input.setInputProcessor(new InputHandler(world));
     }
 
     @Override
