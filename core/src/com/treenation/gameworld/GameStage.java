@@ -1,16 +1,23 @@
 package com.treenation.gameworld;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.utils.Array;
 import com.treenation.actor.Background;
 import com.treenation.actor.Coin;
+import com.treenation.actor.GameActor;
 import com.treenation.actor.Ground;
 import com.treenation.actor.Runner;
+import com.treenation.game.Statistic;
 import com.treenation.gameobject.WorldUtils;
+import com.treenation.utils.BodyUtils;
+
 
 
 public class GameStage extends Stage {
@@ -24,7 +31,7 @@ public class GameStage extends Stage {
     
     private final float TIME_STEP = 1 / 300f;
     private float accumulator = 0f;
-
+    private float coinTime = 0f;
     private OrthographicCamera camera;
     private Box2DDebugRenderer renderer;
 
@@ -33,9 +40,11 @@ public class GameStage extends Stage {
         addActor(new Background());
         addActor(new Ground(WorldUtils.createGround(world)));
         Coin mycoin = new Coin(WorldUtils.createGold(world));
+        Coin mycoin2 = new Coin(WorldUtils.createDynamicBody(world,150,300,20,20));
         mycoin.setTouchable(Touchable.enabled);
         //mycoin.setPosition(200,200);
         addActor(mycoin);
+        addActor(mycoin2);
         //ground = new Ground(WorldUtils.createGround(world));
         runner = new Runner(WorldUtils.createRunner(world));
         renderer = new Box2DDebugRenderer();
@@ -56,13 +65,35 @@ public class GameStage extends Stage {
 
         // Fixed timestep
         accumulator += delta;
-
+        
         while (accumulator >= delta) {
             world.step(TIME_STEP, 6, 2);
             accumulator -= TIME_STEP;
+            
+            
         }
-
+        
+        coinTime++;
+        //Gdx.app.log("GameScreen", String.valueOf(delta));
+        if(coinTime > 60 && Statistic.coin_count < 6)
+        {
+        	Coin mycoin3 = new Coin(WorldUtils.createDynamicBody(world,300,400,20,20));
+        	mycoin3.setName("coin");
+        	addActor(mycoin3);
+        	//mycoin3.r
+        	Statistic.coin_count++;
+        	//world.destroyBody(mycoin3);
+        	coinTime = 0f;
+        }
         //TODO: Implement interpolation
+        //world.
+       
+        Array<Actor> actorlist = getActors();
+        //world.getBodies(bodies);
+
+        for (Actor body : actorlist) {
+            update( body);
+        }
 
     }
 
@@ -70,5 +101,16 @@ public class GameStage extends Stage {
     public void draw() {
         super.draw();
         renderer.render(world, camera.combined);
+    }
+    
+    private void update(Actor body) {
+    	if(body.getName() == "coin") {
+        Coin mbd = (Coin) body;
+        if(mbd != null)
+    	if (mbd.ist) {
+        	Gdx.app.log("GameScreen", "destroyyy");
+        	body.remove();
+        }
+    	}
     }
 }

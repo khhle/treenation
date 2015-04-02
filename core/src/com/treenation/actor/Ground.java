@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.treenation.utils.Constants;
 
+
 public class Ground extends GameActor {
 	private final TextureRegion textureRegion;
 	//private final TextureRegion textureRegionL;
@@ -42,5 +43,7 @@ public class Ground extends GameActor {
         //batch.draw(textureRegionL, position.x, position.y+200, 192,101);
         //batch.draw(textureRegionR, w-192, position.y+200, 192,101);
     }
+
+	
 
 }

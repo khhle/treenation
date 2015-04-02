@@ -6,15 +6,22 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.treenation.utils.ActorType;
+
 
 public abstract class GameActor extends Actor {
 
     protected Body body;
+    protected ActorType actorType;
     protected Rectangle screenRectangle;
     protected TextureRegion textureRegion;
+    protected boolean isTouched;
     
     public GameActor(Body body) {
         this.body = body;
+        actorType = ActorType.DEFAULT;
+        isTouched = false;
+        //userType = (UserDataType) body.getUserData();
         textureRegion = new TextureRegion(new Texture(Gdx.files.internal("error.png")));
         screenRectangle = new Rectangle();
     }
@@ -34,4 +41,11 @@ public abstract class GameActor extends Actor {
         screenRectangle.width = textureRegion.getRegionWidth();
         screenRectangle.height = textureRegion.getRegionHeight();
     }
+    
+    public boolean getIsTouched(){
+    	return isTouched;
+    }
+    //public abstract UserDataType getUserDataType();
+    
+    //public abstract UserData getUserData();
 }

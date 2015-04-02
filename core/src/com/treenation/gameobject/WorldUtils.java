@@ -51,4 +51,31 @@ public class WorldUtils {
         shape.dispose();
         return body;
     }
+    
+    public static Body createDynamicBody(World world,float x,float y, float w,float h) {
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.position.set(new Vector2(x,y));
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(w, h);
+        Body body = world.createBody(bodyDef);
+        //body.
+        //body.setUserData(userdata);
+        //BodyType bodyType = bType;
+        body.createFixture(shape, 0.5f);
+        body.resetMassData();
+        shape.dispose();
+        return body;
+    }
+    
+    public static Body createStaticBody(World world,float x,float y, float w,float h) {
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.position.set(new Vector2(x,y));
+        Body body = world.createBody(bodyDef);
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(w, h);
+        body.createFixture(shape, 0);
+        shape.dispose();
+        return body;
+    }
 }

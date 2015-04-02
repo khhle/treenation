@@ -9,7 +9,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.treenation.game.Statistic;
+import com.treenation.utils.ActorType;
 import com.treenation.utils.Constants;
+
 
 public class Coin extends GameActor {
 	//private final TextureRegion textureRegion;
@@ -21,9 +24,10 @@ public class Coin extends GameActor {
     private float w;
     private float h;
 	private boolean started;
+	public boolean ist = false;
 	public Coin(Body body) {
 		super(body);
-		
+		actorType = ActorType.COIN;
 		position = Constants.GROUND_POSITION;
 		w = Constants.GROUND_W;
 		h = Constants.GROUND_H;
@@ -40,7 +44,12 @@ public class Coin extends GameActor {
         addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 ((Coin)event.getTarget()).started = true;
+                Statistic.total_gold++;
+                Statistic.coin_count--;
+                isTouched = true;
+                ist = true;
                 Gdx.app.log("GameRenderer", "hot");
+                
                 return true;
             }
         });
@@ -66,7 +75,11 @@ public class Coin extends GameActor {
         setBounds(screenRectangle.x,screenRectangle.y,textureRegion.getRegionWidth(),textureRegion.getRegionHeight());
         if(started){
         	screenRectangle.x += 50;
+        	//setVisible(false);
+        	
         }
     }
+
+	
 
 }
