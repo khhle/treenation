@@ -3,25 +3,25 @@ package com.treenation.helper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
-import com.treenation.gameobject.Coin;
-import com.treenation.gameworld.GameRenderer;
-import com.treenation.gameworld.GameWorld;
 
 
+
+
+/*
 public class InputHandler implements InputProcessor {
-	//private Coin myCoin;
-	private GameRenderer renderer;
-	private GameWorld world;
+
 	
-	public InputHandler(GameWorld world) {
+	
+	
+	public InputHandler() {
         // myBird now represents the gameWorld's bird.
-        this.world = world;
+        
     }
 	
 	@Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		//myCoin.onClick();
-		world.setTouchedArea(new Vector2(screenX, screenY));
+		
         return true; // Return true to say we handled the touch.
     }
 
@@ -42,7 +42,7 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-    	world.setTouchedArea(new Vector2(-100.0f, -100.0f));
+    	
 		return false;
     }
 
@@ -60,4 +60,4 @@ public class InputHandler implements InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
-}
+}*/

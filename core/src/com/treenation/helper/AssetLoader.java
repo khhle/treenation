@@ -3,7 +3,7 @@ package com.treenation.helper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-
+/*
 public class AssetLoader {
 	static TextureAtlas spriteSheet;
 	public static Sprite coin_sprite;
@@ -21,4 +21,4 @@ public class AssetLoader {
 		
 	}
 
-}
+}*/

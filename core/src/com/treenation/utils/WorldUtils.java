@@ -1,4 +1,4 @@
-package com.treenation.gameobject;
+package com.treenation.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -6,13 +6,12 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.treenation.utils.Constants;
 
 public class WorldUtils {
 	public static World createWorld() {
         return new World(Constants.WORLD_GRAVITY, true);
     }
-
+	/*
     public static Body createGround(World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(Constants.GROUND_POSITION);
@@ -22,12 +21,12 @@ public class WorldUtils {
         body.createFixture(shape, 0);
         shape.dispose();
         return body;
-    }
-    
+    }*/
+    /*
     public static Body createRunner(World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(new Vector2(50, 50));
+        bodyDef.position.set(new Vector2(200, 500));
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(100, 100);
         Body body = world.createBody(bodyDef);
@@ -35,8 +34,8 @@ public class WorldUtils {
         body.resetMassData();
         shape.dispose();
         return body;
-    }
-    
+    }*/
+    /*
     public static Body createGold(World world) {
     	int tx = (int)(Math.random()*Constants.APP_WIDTH);
 		int ty = (int)(Math.random()*Constants.APP_HEIGHT);
@@ -50,18 +49,31 @@ public class WorldUtils {
         body.resetMassData();
         shape.dispose();
         return body;
-    }
+    }*/
     
-    public static Body createDynamicBody(World world,float x,float y, float w,float h) {
+    public static Body createDynamicBody(World world,float x,float y, float w,float h, UserData udata) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(new Vector2(x,y));
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(w, h);
         Body body = world.createBody(bodyDef);
-        //body.
-        //body.setUserData(userdata);
-        //BodyType bodyType = bType;
+        body.setUserData(udata);
+        body.createFixture(shape, 0.5f);
+        body.resetMassData();
+        shape.dispose();
+        return body;
+    }
+    
+    public static Body createKinematicBody(World world,float x,float y, float w,float h, UserData udata) {
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.KinematicBody;
+        bodyDef.position.set(new Vector2(x,y));
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(w, h);
+        Body body = world.createBody(bodyDef);
+        body.setUserData(udata);
+        body.setLinearVelocity(0.0f, -100.0f);
         body.createFixture(shape, 0.5f);
         body.resetMassData();
         shape.dispose();

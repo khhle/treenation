@@ -1,10 +1,11 @@
 package com.treenation.utils;
 
-public enum ActorType {
+public enum UserData {
 	DEFAULT,
 	BACKGROUND,
     PLATFORM,
     COIN,
     HOUSE,
-    ARMY
+    ARMY,
+    RECYCLE
 }

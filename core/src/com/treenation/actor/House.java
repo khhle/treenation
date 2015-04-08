@@ -10,29 +10,21 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.treenation.game.Statistic;
-//import com.treenation.utils.ActorType;
 import com.treenation.utils.Constants;
 import com.treenation.utils.UserData;
 
-
-public class Coin extends GameActor {
-
-	private boolean started;
-	public boolean ist = false;
-	public Coin(final Body body) {
+public class House  extends GameActor {
+	
+	
+	public House(final Body body) {
 		super(body);
-
+	
 		body.setLinearVelocity(0f, -100f);
-        textureRegion = new TextureRegion(new Texture(Gdx.files.internal("coin.png")));
-
+        textureRegion = new TextureRegion(new Texture(Gdx.files.internal("house1.png")));
         setBounds(screenRectangle.x,screenRectangle.y,textureRegion.getRegionWidth(),textureRegion.getRegionHeight());
         addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((Coin)event.getTarget()).started = true;
-                Statistic.total_gold++;
-                Statistic.coin_count--;
-                body.setUserData(UserData.RECYCLE);
-
+                
                 return true;
             }
         });
@@ -51,11 +43,6 @@ public class Coin extends GameActor {
         super.act(delta);
         
         setBounds(screenRectangle.x,screenRectangle.y,textureRegion.getRegionWidth(),textureRegion.getRegionHeight());
-        if(started){
-        	setVisible(false);
-        }
+        
     }
-
-	
-
 }
