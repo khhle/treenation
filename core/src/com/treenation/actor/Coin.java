@@ -17,18 +17,22 @@ import com.treenation.utils.UserData;
 
 public class Coin extends GameActor {
 
-	private boolean started;
+	private boolean started; // testing stuff
 	public boolean ist = false;
 	public Coin(final Body body) {
 		super(body);
 
+		//set falling speed
 		body.setLinearVelocity(0f, -100f);
+		
+		//replaced default sprite with actual sprite
         textureRegion = new TextureRegion(new Texture(Gdx.files.internal("coin.png")));
 
-        setBounds(screenRectangle.x,screenRectangle.y,textureRegion.getRegionWidth(),textureRegion.getRegionHeight());
+        
         addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((Coin)event.getTarget()).started = true;
+                ((Coin)event.getTarget()).started = true; //testing stuff
+            	//If click, set this body to Recycle type, so it will be remove in stage
                 Statistic.total_gold++;
                 Statistic.coin_count--;
                 body.setUserData(UserData.RECYCLE);
@@ -50,7 +54,7 @@ public class Coin extends GameActor {
     public void act(float delta) {
         super.act(delta);
         
-        setBounds(screenRectangle.x,screenRectangle.y,textureRegion.getRegionWidth(),textureRegion.getRegionHeight());
+        //testing stuff
         if(started){
         	setVisible(false);
         }

@@ -1,3 +1,7 @@
+//Use to load all the asset at the beginning 
+//Temporally not using for now
+//All asset will be load individually in actor class
+
 package com.treenation.helper;
 
 import com.badlogic.gdx.Gdx;

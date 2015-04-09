@@ -1,3 +1,5 @@
+//Hold all the important value during run time
+
 package com.treenation.game;
 
 public class Statistic {

@@ -24,6 +24,7 @@ public class Ground extends GameActor {
 		w = Constants.GROUND_W;
 		h = Constants.GROUND_H;
 		
+		//replaced default sprite with actual sprite
         textureRegion = new TextureRegion(new Texture(Gdx.files.internal("ground.png")));
         
     }

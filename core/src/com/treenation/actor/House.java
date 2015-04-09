@@ -20,8 +20,10 @@ public class House  extends GameActor {
 		super(body);
 	
 		body.setLinearVelocity(0f, -100f);
+		
+		//replaced default sprite with actual sprite
         textureRegion = new TextureRegion(new Texture(Gdx.files.internal("house1.png")));
-        setBounds(screenRectangle.x,screenRectangle.y,textureRegion.getRegionWidth(),textureRegion.getRegionHeight());
+        
         addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 
@@ -41,8 +43,6 @@ public class House  extends GameActor {
     @Override
     public void act(float delta) {
         super.act(delta);
-        
-        setBounds(screenRectangle.x,screenRectangle.y,textureRegion.getRegionWidth(),textureRegion.getRegionHeight());
         
     }
 }

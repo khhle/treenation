@@ -10,14 +10,14 @@ import com.treenation.utils.Constants;
 
 public class Background extends Actor {
 
+	//sprite of the background
     private final TextureRegion textureRegion;
-    private Rectangle textureRegionBounds;
 
     
 
     public Background() {
+    	//find the background image file
         textureRegion = new TextureRegion(new Texture(Gdx.files.internal("bg.jpg")));
-        textureRegionBounds = new Rectangle(0, 0, Constants.APP_WIDTH, Constants.APP_HEIGHT);
         
     }
 
@@ -29,7 +29,8 @@ public class Background extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        batch.draw(textureRegion, textureRegionBounds.x, textureRegionBounds.y, textureRegionBounds.width,textureRegionBounds.height);
+        //draw the background at (0,0) with app's size
+        batch.draw(textureRegion, 0, 0, Constants.APP_WIDTH, Constants.APP_HEIGHT);
         
     }
 

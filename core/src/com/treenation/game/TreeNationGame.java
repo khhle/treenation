@@ -1,3 +1,6 @@
+//Main game
+//Call GameScreen to display the game
+
 package com.treenation.game;
 
 

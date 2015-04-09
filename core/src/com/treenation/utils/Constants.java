@@ -1,9 +1,13 @@
+//Constant used in the game
+
 package com.treenation.utils;
 
 import com.badlogic.gdx.math.Vector2;
 
 
 public class Constants {
+	
+	//App constant
 	public static final int APP_WIDTH = 1280;
     public static final int APP_HEIGHT = 720;
     

@@ -1,3 +1,7 @@
+//Use for creating physical body 
+//3 different type: static, dynamic, kinematic
+//
+
 package com.treenation.utils;
 
 import com.badlogic.gdx.Gdx;

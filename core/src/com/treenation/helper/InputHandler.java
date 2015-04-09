@@ -1,3 +1,7 @@
+//Handle all input event
+//Temporally not using. 
+//All input will be handle in actor class
+
 package com.treenation.helper;
 
 import com.badlogic.gdx.Gdx;

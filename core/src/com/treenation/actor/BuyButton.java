@@ -19,12 +19,14 @@ public class BuyButton extends GameActor {
 	public BuyButton(final Body body) {
 		super(body);
 		
-		
-        textureRegion = new TextureRegion(new Texture(Gdx.files.internal("buy.png")));
-        setBounds(screenRectangle.x,screenRectangle.y,textureRegion.getRegionWidth(),textureRegion.getRegionHeight());
+		//replaced default sprite with actual sprite
+        textureRegion = new TextureRegion(new Texture(Gdx.files.internal("buy.png"))); 
+        
+        //add input listener
         addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                Statistic.total_gold--;
+                //If clicked, decrease total gold  and set addHouse in gamestage to true
+            	Statistic.total_gold--;
                 GameStage.addHouse = true;
                 
                 return true;
@@ -44,7 +46,5 @@ public class BuyButton extends GameActor {
     public void act(float delta) {
         super.act(delta);
         
-        setBounds(screenRectangle.x,screenRectangle.y,textureRegion.getRegionWidth(),textureRegion.getRegionHeight());
-       
     }
 }

@@ -1,3 +1,6 @@
+//Display the screen
+//Call GameStage to display what's in the stage
+
 package com.treenation.screen;
 
 import com.badlogic.gdx.Gdx;
