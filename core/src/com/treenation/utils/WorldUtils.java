@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.treenation.bodydata.UserData;
 
 public class WorldUtils {
 	public static World createWorld() {
@@ -55,30 +56,31 @@ public class WorldUtils {
         return body;
     }*/
     
-    public static Body createDynamicBody(World world,float x,float y, float w,float h, UserData udata) {
+    public static Body createDynamicBody(World world,float x,float y, float w,float h) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(new Vector2(x,y));
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(w, h);
         Body body = world.createBody(bodyDef);
-        body.setUserData(udata);
+        body.setUserData(new UserData());
         body.createFixture(shape, 0.5f);
         body.resetMassData();
         shape.dispose();
         return body;
     }
     
-    public static Body createKinematicBody(World world,float x,float y, float w,float h, UserData udata) {
+    public static Body createKinematicBody(World world,float x,float y, float w,float h) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.KinematicBody;
         bodyDef.position.set(new Vector2(x,y));
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(w, h);
         Body body = world.createBody(bodyDef);
-        body.setUserData(udata);
+        body.setUserData(new UserData());
         body.setLinearVelocity(0.0f, -100.0f);
         body.createFixture(shape, 0.5f);
+        //body.se
         body.resetMassData();
         shape.dispose();
         return body;
@@ -88,6 +90,7 @@ public class WorldUtils {
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(new Vector2(x,y));
         Body body = world.createBody(bodyDef);
+        body.setUserData(new UserData());
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(w, h);
         body.createFixture(shape, 0);

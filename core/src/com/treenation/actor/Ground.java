@@ -4,9 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.treenation.bodydata.BodyType;
 import com.treenation.utils.Constants;
 
 
@@ -20,6 +20,8 @@ public class Ground extends GameActor {
 	
 	public Ground(Body body) {
 		super(body);
+		
+		userData.setBodyType(BodyType.PLATFORM);
 		position = Constants.GROUND_POSITION;
 		w = Constants.GROUND_W;
 		h = Constants.GROUND_H;
@@ -34,6 +36,8 @@ public class Ground extends GameActor {
         super.draw(batch, parentAlpha);
         batch.draw(textureRegion, position.x, position.y, w,h);
     }
+    
+    
 
 	
 

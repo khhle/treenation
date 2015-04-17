@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.treenation.game.Statistic;
+import com.treenation.utils.Constants;
 
 
 public class Text extends Actor {
@@ -21,7 +21,7 @@ public class Text extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-         font.draw(batch, "Total gold: " + Statistic.total_gold, 10, 50);
+         font.draw(batch, "Total gold: " + Constants.TOTAL_GOLD, 10, 50);
          //Also remember that an actor uses local coordinates for drawing within
          //itself!
     }

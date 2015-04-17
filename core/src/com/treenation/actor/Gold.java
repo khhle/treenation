@@ -9,19 +9,19 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.treenation.game.Statistic;
+import com.treenation.bodydata.BodyType;
 //import com.treenation.utils.ActorType;
 import com.treenation.utils.Constants;
-import com.treenation.utils.UserData;
 
 
-public class Coin extends GameActor {
+
+public class Gold extends GameActor {
 
 	private boolean started; // testing stuff
 	public boolean ist = false;
-	public Coin(final Body body) {
+	public Gold(final Body body) {
 		super(body);
-
+		userData.setBodyType(BodyType.COIN);
 		//set falling speed
 		body.setLinearVelocity(0f, -100f);
 		
@@ -31,12 +31,12 @@ public class Coin extends GameActor {
         
         addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((Coin)event.getTarget()).started = true; //testing stuff
+                ((Gold)event.getTarget()).started = true; //testing stuff
             	//If click, set this body to Recycle type, so it will be remove in stage
-                Statistic.total_gold++;
-                Statistic.coin_count--;
-                body.setUserData(UserData.RECYCLE);
-
+                Constants.TOTAL_GOLD++;
+                Constants.COIN_COUNT--;
+                //body.setUserData(UserData.RECYCLE);
+                userData.setBodyType(BodyType.RECYCLE);
                 return true;
             }
         });
@@ -55,10 +55,12 @@ public class Coin extends GameActor {
         super.act(delta);
         
         //testing stuff
-        if(started){
-        	setVisible(false);
-        }
+        //if(started){
+        //	setVisible(false);
+        //}
     }
+    
+   
 
 	
 
