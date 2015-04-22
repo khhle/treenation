@@ -14,16 +14,15 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
-import com.treenation.actor.Background;
-import com.treenation.actor.BuyButton;
-import com.treenation.actor.Enemy;
 import com.treenation.actor.Gold;
-import com.treenation.actor.Ground;
-import com.treenation.actor.House;
 import com.treenation.actor.Text;
+import com.treenation.actor.building.Mine;
+import com.treenation.actor.button.BuyButton;
+import com.treenation.actor.enemy.Monster1;
+import com.treenation.actor.environment.Background;
+import com.treenation.actor.environment.Ground;
 import com.treenation.bodydata.UserData;
 import com.treenation.utils.BodyUtils;
 import com.treenation.utils.Constants;
@@ -61,7 +60,7 @@ public class GameStage extends Stage implements ContactListener{
         addCoin(500,600,20,20);
         
         
-        Enemy emy = new Enemy(WorldUtils.createDynamicBody(world,1300,150,30,30));
+        Monster1 emy = new Monster1(WorldUtils.createDynamicBody(world,1300,150,30,30));
         addActor(emy);
         
         //Add text to display how much coin has been collected
@@ -156,7 +155,7 @@ public class GameStage extends Stage implements ContactListener{
             	temp = (UserData)a.getUserData();
             	temp2 = (UserData)b.getUserData();
             	temp.setIsDamage(true);
-            	temp.addDamage(temp2);
+            	temp.addDamageToList(temp2);
             	a.setUserData(temp);
             }
             if(BodyUtils.bodyIsHouse(b))
@@ -165,7 +164,7 @@ public class GameStage extends Stage implements ContactListener{
             	temp = (UserData)b.getUserData();
             	temp2 = (UserData)a.getUserData();
             	temp.setIsDamage(true);
-            	temp.addDamage(temp2);
+            	temp.addDamageToList(temp2);
             	b.setUserData(temp);
             }
         } 
@@ -193,7 +192,7 @@ public class GameStage extends Stage implements ContactListener{
     //Add house function
     //input: x, y position, width and heigh of sprite
     public void addHouse(float x,float y,float w,float h){
-    	House house1 = new House(WorldUtils.createStaticBody(world,x,y,w,h));
+    	Mine house1 = new Mine(WorldUtils.createStaticBody(world,x,y,w,h));
         house1.setName("house");
     	addActor(house1);
     }

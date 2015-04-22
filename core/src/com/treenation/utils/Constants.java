@@ -16,6 +16,9 @@ public class Constants {
   	public static float TOTAL_ARMY = 0;
   	public static float TOTAL_HOUSE = 0;
     
+  	//Player constant
+  	public static float DEFAULT_TAP_DAMAGE = 100;
+  	
     //World constant
     public static final Vector2 WORLD_GRAVITY = new Vector2(0, -10);
     

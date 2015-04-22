@@ -64,10 +64,10 @@ public class UserData {
     	return damage;
     }
     
-    public ArrayList<UserData> getList() {
+    public ArrayList<UserData> getDamageList() {
     		 return damageList;
 	}
-    public void addDamage(UserData nnew) {
+    public void addDamageToList(UserData nnew) {
     			 damageList.add(nnew);
 	}
 }
